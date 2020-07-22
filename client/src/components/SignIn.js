@@ -8,7 +8,7 @@ const initialValues = {
 }
 
 const SingIn = (props) => {
-    
+    const {setUserLoggedIn} = props
 
 const [formValues, setFormValues] = useState(initialValues)
 
@@ -20,8 +20,9 @@ const postExistingUser = user => {
         .then(res => {
             console.log(res)
             localStorage.setItem('token', res.data.token)
- 
+            setUserLoggedIn(true)
             history.push('/users')
+         
         })
         .catch(err => {
             console.log(err)

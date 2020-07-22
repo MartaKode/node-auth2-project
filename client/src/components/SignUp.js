@@ -9,7 +9,9 @@ const initialValues = {
     department: ''
 }
 
-const SingUp = () => {
+const SingUp = (props) => {
+    const {setUserLoggedIn} = props
+
     const [formValues, setFormValues] = useState(initialValues)
 
     const history = useHistory()
@@ -20,6 +22,7 @@ const SingUp = () => {
             .then(res => {
                 console.log(res)
                 localStorage.setItem('token', res.data.token)
+                setUserLoggedIn(true)
                 history.push('/users')
             })
             .catch(err => {

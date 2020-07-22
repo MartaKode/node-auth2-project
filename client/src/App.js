@@ -28,7 +28,7 @@ function App() {
   }
 
   const alertUsers = () => {
-    if(!localStorage.getItem('token')){
+    if (!localStorage.getItem('token')) {
       alert('Must sign in to access users')
     }
   }
@@ -46,11 +46,19 @@ function App() {
 
       {/* Routes: */}
       <Switch>
-        <Route path='/signup' component={SingUp} />
+        <Route path='/signup'>
+        <SingUp
+        setUserLoggedIn = {setUserLoggedIn}
+        />
+        </Route>
 
-        <Route path='/signin' component={SingIn} />
+        <Route path='/signin'>
+        <SingIn 
+           setUserLoggedIn = {setUserLoggedIn}
+        />
+        </Route>
 
-        <PrivateRoute  exact path='/users' component={UsersList} />
+        <PrivateRoute exact path='/users' component={UsersList} />
 
       </Switch>
 
